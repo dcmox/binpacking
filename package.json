@@ -1,0 +1,43 @@
+{
+  "name": "binpack-simple",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Simple binpack algorithm",
+  "main": "binpack.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "3.7.2",
+    "@types/jest": "^24.0.24",
+    "@types/sinon": "^7.5.1",
+    "chai": "^4.2.0",
+    "jest": "^24.9.0",
+    "sinon": "^7.5.0",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1"
+  },
+  "scripts": {
+    "test": "jest tests/*",
+    "build": "npm run build:main && npm run build:demo",
+    "build:main": "tsc binpack.ts",
+    "build:demo": "tsc tests/usage.ts",
+    "watch": "tsc -w tests/usage.ts",
+    "test-usage": "node tests/usage.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcmox/binpacking.git"
+  },
+  "keywords": [
+    "binpack",
+    "3d packing",
+    "packing"
+  ],
+  "author": "Daniel Moxon (dancmox@comcast.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dcmox/binpacking/issues"
+  },
+  "homepage": "https://github.com/dcmox/binpacking#readme"
+}

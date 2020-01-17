@@ -1,8 +1,5 @@
-# binpacking
-Simple binpacking algorithm for packing items in a 3D space.
+import { binpack, IBinItem } from '../binpack'
 
-## Usage
-```typescript
 const items: IBinItem[] = [
     {length: 2, width: 2, height: 2, id: 'A'},
     {length: 1, width: 2, height: 3, id: 'B'},
@@ -29,4 +26,3 @@ console.time('BinPack time')
 const results = binpack(bin, items)
 console.log(results)
 console.timeEnd('BinPack time')
-```
