@@ -133,6 +133,24 @@ export const pack = (matrix: TBin, item: any): IBinItemResult => {
         solutions.push({pos: or, item: ri, desc: 'Orientation: Rotate L -> W', rotation: true})
     }
 
+    if (item.height !== item.width || item.length !== item.height || item.width !== item.length) {
+        const ri: IBinItem = Object.assign({}, item)
+        ri.height = item.width
+        ri.length = item.height
+        ri.width = item.length
+        const or: IBinItemPosition = getPosition(matrix, ri)
+        solutions.push({pos: or, item: ri, desc: 'Orientation: Rotate W -> L, H -> W, L -> H', rotation: true})
+    }
+
+    if (item.height !== item.width || item.length !== item.height || item.width !== item.length) {
+        const ri: IBinItem = Object.assign({}, item)
+        ri.length = item.width
+        ri.width = item.height
+        ri.height = item.length
+        const or: IBinItemPosition = getPosition(matrix, ri)
+        solutions.push({pos: or, item: ri, desc: 'Orientation: Rotate L -> W, W -> H, H -> L', rotation: true})
+    }
+
     const fit = bestFit(matrix, solutions)
 
     if (fit.x !== false) {
