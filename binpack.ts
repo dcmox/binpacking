@@ -158,9 +158,18 @@ export const binpack = (boxSize: IBinSize, items: IBinItem[]): IBinResult => {
     const box = generateEmptyBin(boxSize.height, boxSize.width, boxSize.length)
     items.sort((a: IBinItem, b: IBinItem) => a.length * a.width * a.height > b.length * b.width * b.height ? -1 : 1)
     const results: any = []
-    items.forEach((item: IBinItem) => results.push(pack(box, item)))
+    let idx: number = 0
+    items.forEach((item: IBinItem) => {
+        const result = pack(box, item)
+        if (result.code !== 'OVERSIZED') { 
+            results.push({order: ++idx, ...result})
+        } else {
+            results.push({order: 'Unfit', ...result})
+        }
+    })
     const unfit: number = results.filter((r: IBinItemResult) => r.code === 'OVERSIZED').length
     const rotations: number = results.filter((r: IBinItemResult) => r.code === 'ROTATION').length
+    results.sort((a: any, b: any) => typeof b === 'string' ? -1 : a.order < b.order ? -1 : 1)
     return { box, results, rotations, unfit }
 }
 
