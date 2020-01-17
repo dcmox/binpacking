@@ -30,3 +30,6 @@ const results = binpack(bin, items)
 console.log(results)
 console.timeEnd('BinPack time')
 ```
+
+## TODO
+Needs unit testing and 3D visualization of packing results.
